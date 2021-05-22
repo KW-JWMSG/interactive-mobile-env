@@ -1,28 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-main class="d-md-none">
+      <router-view />
+    </v-main>
+    <v-main class="d-none d-md-block">
+      <v-container>
+        <v-row>
+          <v-col>
+            <v-card color="#ffc93c">
+              <v-container fluid>
+                <v-row>
+                  <v-spacer></v-spacer>
+                  <v-col cols="12" md="3">
+                    <v-img src="@/assets/logo_transparent.png" />
+                  </v-col>
+                  <v-spacer></v-spacer>
+                </v-row>
+                <v-row class="pb-12">
+                  <v-col>
+                    <h3 class="text-center">나 안취해써 서비스는 모바일에서 사용 가능합니다.</h3>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+
+  data: () => ({
+    //
+  }),
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
 </style>
