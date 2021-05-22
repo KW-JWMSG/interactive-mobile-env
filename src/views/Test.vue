@@ -63,7 +63,7 @@
 
 <script>
 // @ is an alias to /src
-let recognition = recognition = new recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 recognition.interimResults = true;
 recognition.lang = "ko-KR";
 
