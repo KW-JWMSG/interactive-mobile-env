@@ -8,7 +8,7 @@
               <v-row class="pt-12">
                 <v-col>
                   <h2 class="text-center">당신의 취한 정도를 검사합니다</h2>
-                  <h3 class="text-center">아래에 보이는 단어를 읽어 주세요!</h3>
+                  <h3 class="text-center">아래에 보이는 문장을 읽어 주세요!</h3>
                 </v-col>
               </v-row>
 
@@ -63,9 +63,7 @@
 
 <script>
 // @ is an alias to /src
-window.SpeechRecognition =
-  window.SpeechRecognition || window.webkitSpeechRecognition;
-let recognition = new window.SpeechRecognition();
+let recognition = recognition = new recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 recognition.interimResults = true;
 recognition.lang = "ko-KR";
 
