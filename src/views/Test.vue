@@ -84,14 +84,12 @@ export default {
     recognition.onstart = null;
     recognition.onend = null;
     recognition.onresult = null;
-    recognition.arbort();
     recognition.stop();
   },
   deactivated() {
     recognition.onstart = null;
     recognition.onend = null;
     recognition.onresult = null;
-    recognition.arbort();
     recognition.stop();
   },
   methods: {
