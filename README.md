@@ -6,6 +6,9 @@
 * [Vuetify](https://vuetifyjs.com/en/)
 * [SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition)
 
+## 프로젝트 접속
+[나 안취해써](https://interactive.jwmsg.kr)
+
 
 # 빌드 혹은 코드 테스트
 
