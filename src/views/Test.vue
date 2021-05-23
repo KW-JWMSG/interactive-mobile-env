@@ -66,6 +66,7 @@
 let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
 recognition.interimResults = true;
 recognition.lang = "ko-KR";
+recognition.interimResults = false;
 
 export default {
   name: "Home",
@@ -86,7 +87,7 @@ export default {
     OnStopSpeak() {
       recognition.start();
     },
-    OnParseData(RS) {
+    OnParseData(RS) {  
       this.readedData = Array.from(RS.results)
         .map((results) => results[0].transcript)
         .join("");
