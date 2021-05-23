@@ -77,7 +77,9 @@ export default {
     recognition.onresult = this.OnParseData;
   },
   methods: {
-    OnStartSpeak() {},
+    OnStartSpeak() {
+      this.readedData="듣는중"
+      },
     OnStopSpeak() {
       recognition.start();
     },
