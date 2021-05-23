@@ -67,14 +67,14 @@ let recognition = new (window.SpeechRecognition ||
   window.webkitSpeechRecognition ||
   window.mozSpeechRecognition ||
   window.msSpeechRecognition)();
-recognition.interimResults = true;
-recognition.lang = "ko-KR";
-recognition.interimResults = false;
 
 export default {
   name: "Home",
   components: {},
   mounted() {
+    recognition.interimResults = true;
+    recognition.lang = "ko-KR";
+    recognition.interimResults = false;
     recognition.start();
     recognition.onstart = this.OnStartSpeak;
     recognition.onend = this.OnStopSpeak;
