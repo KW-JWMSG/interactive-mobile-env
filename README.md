@@ -1,4 +1,13 @@
-# vueartest
+# 나 안취해써
+이 프로젝트는 인터랙티브미디어개론 수업에 개인과제2를 위해 개발된 프로젝트 입니다.
+
+## 사용기술
+* [VueJS](https://vuejs.org/)
+* [Vuetify](https://vuetifyjs.com/en/)
+* [SpeechRecognition](https://developer.mozilla.org/en-US/docs/Web/API/SpeechRecognition)
+
+
+# 빌드 혹은 코드 테스트
 
 ## Project setup
 ```
