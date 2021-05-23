@@ -82,6 +82,7 @@ export default {
       recognition.start();
     },
     OnParseData(RS) {
+      this.readedData = ""
       this.readedData = Array.from(RS.results)
         .map((results) => results[0].transcript)
         .join("");
