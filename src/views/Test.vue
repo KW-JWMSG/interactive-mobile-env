@@ -34,15 +34,15 @@
 
               <v-row class="mt-0 pt-0">
                 <v-col class="text-center font-weight-bold red--text">
-                  틀린 개수 : {{failCnt}}개 / 5개
+                  틀린 개수 : {{ failCnt }}개 / 5개
                 </v-col>
                 <v-col class="text-center font-weight-bold green--text">
-                  맞춘 개수 : {{winCnt }}개
+                  맞춘 개수 : {{ winCnt }}개
                 </v-col>
               </v-row>
               <v-row class="pb-12">
                 <v-col class="text-center font-weight-bold">
-                  <h3>총점수 : {{winCnt - failCnt}}점 / 5점</h3>
+                  <h3>총점수 : {{ winCnt - failCnt }}점 / 5점</h3>
                 </v-col>
               </v-row>
             </v-container>
@@ -104,14 +104,14 @@ export default {
     async OnStartSpeak() {
       this.tryCnt++;
       const resData = await getMessage();
-      if(resData[0].idx == this.originDataIdx){
-        this.OnStartSpeak()
+      if (resData[0].idx == this.originDataIdx) {
+        this.OnStartSpeak();
         return;
       }
-      this.originData = resData[0].message
-      this.originDataIdx = resData[0].idx
+      this.originData = resData[0].message;
+      this.originDataIdx = resData[0].idx;
       this.readedData = "듣는중";
-      this.indicate_color = "#ffffff"
+      this.indicate_color = "#ffffff";
     },
     OnStopSpeak() {
       if (
@@ -119,14 +119,14 @@ export default {
         this.originData.replaceAll(" ", "")
       ) {
         this.winCnt++;
+        this.indicate_color = "#00ff00";
         if (this.failCnt - this.failCnt > 5) {
-          this.indicate_color = "#00ff00"
           //성공
         }
       } else {
         this.failCnt++;
         if (this.failCnt > 5) {
-          //실패
+          this.$router.push('/fail')
         }
       }
       recognition.start();
@@ -158,7 +158,7 @@ export default {
       originDataIdx: null,
       originData: "",
       readedData: "",
-      indicate_color:"#ffffff"
+      indicate_color: "#ffffff",
     };
   },
 };
