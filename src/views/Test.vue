@@ -81,6 +81,7 @@ export default {
     recognition.onresult = this.OnParseData;
   },
   destroyed() {
+    recognition.arbort();
     recognition.stop();
   },
   deactivated() {
