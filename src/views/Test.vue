@@ -78,7 +78,7 @@ let recognition = new (window.SpeechRecognition ||
   window.msSpeechRecognition)();
 import { getMessage } from "@/api/getsockdam.js";
 export default {
-  name: "Home",
+  name: "Test",
   components: {},
   mounted() {
     recognition.interimResults = true;
@@ -125,6 +125,7 @@ export default {
         }
       } else {
         this.failCnt++;
+        this.indicate_color = "#ff0000";
         if (this.failCnt >= 5) {
           this.$router.push('/fail')
         }
