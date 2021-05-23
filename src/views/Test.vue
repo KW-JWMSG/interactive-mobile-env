@@ -74,7 +74,6 @@ export default {
   mounted() {
     recognition.interimResults = true;
     recognition.lang = "ko-KR";
-    recognition.interimResults = false;
     recognition.start();
     recognition.onstart = this.OnStartSpeak;
     recognition.onend = this.OnStopSpeak;
