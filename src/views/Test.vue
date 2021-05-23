@@ -17,8 +17,9 @@
                   <v-card
                     class="pa-4 text-center font-weight-bold"
                     style="font-size: 1.2rem; min-height: 3.8rem"
+                    :color="indicate_color"
                   >
-                    간장 공장 공장장
+                    {{ originData }}
                   </v-card>
                 </v-col>
                 <v-col cols="12" class="mt-1 pt-0">
@@ -31,9 +32,17 @@
                 </v-col>
               </v-row>
 
-              <v-row class="mt-0 pt-0 pb-12">
+              <v-row class="mt-0 pt-0">
                 <v-col class="text-center font-weight-bold red--text">
-                  남은 기회 (3 of 5)
+                  틀린 개수 : {{failCnt}}개 / 5개
+                </v-col>
+                <v-col class="text-center font-weight-bold green--text">
+                  맞춘 개수 : {{winCnt }}개
+                </v-col>
+              </v-row>
+              <v-row class="pb-12">
+                <v-col class="text-center font-weight-bold">
+                  <h3>총점수 : {{winCnt - failCnt}}점 / 5점</h3>
                 </v-col>
               </v-row>
             </v-container>
@@ -67,7 +76,7 @@ let recognition = new (window.SpeechRecognition ||
   window.webkitSpeechRecognition ||
   window.mozSpeechRecognition ||
   window.msSpeechRecognition)();
-
+import { getMessage } from "@/api/getsockdam.js";
 export default {
   name: "Home",
   components: {},
@@ -92,16 +101,46 @@ export default {
     recognition.stop();
   },
   methods: {
-    OnStartSpeak() {
+    async OnStartSpeak() {
+      this.tryCnt++;
+      const resData = await getMessage();
+      if(resData[0].idx == this.originDataIdx){
+        this.OnStartSpeak()
+        return;
+      }
+      this.originData = resData[0].message
+      this.originDataIdx = resData[0].idx
       this.readedData = "듣는중";
+      this.indicate_color = "#ffffff"
     },
     OnStopSpeak() {
+      if (
+        this.readedData.replaceAll(" ", "") ==
+        this.originData.replaceAll(" ", "")
+      ) {
+        this.winCnt++;
+        if (this.failCnt - this.failCnt > 5) {
+          this.indicate_color = "#00ff00"
+          //성공
+        }
+      } else {
+        this.failCnt++;
+        if (this.failCnt > 5) {
+          //실패
+        }
+      }
       recognition.start();
     },
     OnParseData(RS) {
       this.readedData = Array.from(RS.results)
         .map((results) => results[0].transcript)
         .join("");
+      if (
+        this.readedData.replaceAll(" ", "") ==
+        this.originData.replaceAll(" ", "")
+      ) {
+        recognition.stop();
+      }
     },
 
     goToBlog() {
@@ -113,7 +152,13 @@ export default {
   },
   data() {
     return {
+      tryCnt: 0,
+      winCnt: 0,
+      failCnt: 0,
+      originDataIdx: null,
+      originData: "",
       readedData: "",
+      indicate_color:"#ffffff"
     };
   },
 };
