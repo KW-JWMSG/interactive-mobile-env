@@ -63,7 +63,10 @@
 
 <script>
 // @ is an alias to /src
-let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+let recognition = new (window.SpeechRecognition ||
+  window.webkitSpeechRecognition ||
+  window.mozSpeechRecognition ||
+  window.msSpeechRecognition)();
 recognition.interimResults = true;
 recognition.lang = "ko-KR";
 recognition.interimResults = false;
@@ -77,17 +80,20 @@ export default {
     recognition.onend = this.OnStopSpeak;
     recognition.onresult = this.OnParseData;
   },
-  destroyed(){
+  destroyed() {
+    recognition.stop();
+  },
+  deactivated() {
     recognition.stop();
   },
   methods: {
     OnStartSpeak() {
-      this.readedData="듣는중"
-      },
+      this.readedData = "듣는중";
+    },
     OnStopSpeak() {
       recognition.start();
     },
-    OnParseData(RS) {  
+    OnParseData(RS) {
       this.readedData = Array.from(RS.results)
         .map((results) => results[0].transcript)
         .join("");
