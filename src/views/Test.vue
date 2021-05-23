@@ -120,12 +120,12 @@ export default {
       ) {
         this.winCnt++;
         this.indicate_color = "#00ff00";
-        if (this.failCnt - this.failCnt > 5) {
+        if (this.failCnt - this.failCnt >= 5) {
           //성공
         }
       } else {
         this.failCnt++;
-        if (this.failCnt > 5) {
+        if (this.failCnt >= 5) {
           this.$router.push('/fail')
         }
       }

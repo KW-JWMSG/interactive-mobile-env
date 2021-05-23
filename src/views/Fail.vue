@@ -14,13 +14,13 @@
               </v-row>
               <v-row>
                 <v-col>
-                  <h3 class="text-center">당신의 상태를 체크해 보세요</h3>
+                  <h2 class="text-center red--text">많이 취하셨군요!</h2>
                 </v-col>
               </v-row>
               <v-row class="pb-12">
                 <v-spacer></v-spacer>
                 <v-col cols="auto">
-                  <v-btn color="info" @click="goToTest">지금 테스트하기</v-btn>
+                  <v-btn color="info" @click="goToTest">다시 테스트하기</v-btn>
                 </v-col>
                 <v-spacer></v-spacer>
               </v-row>
