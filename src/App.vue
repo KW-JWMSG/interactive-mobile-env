@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <v-main class="d-md-none">
+    <v-main >
       <router-view />
     </v-main>
-    <v-main class="d-none d-md-block">
+    <!-- <v-main class="d-none d-md-block">
       <v-container>
         <v-row>
           <v-col>
@@ -26,7 +26,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-main>
+    </v-main> -->
   </v-app>
 </template>
 
